@@ -4,7 +4,7 @@ import time
 #import neopixel
 from .simulator import Simulator
 import enum
-from effects.defaultEffects import *
+from effects.defaultEffects import DefaultEffect, AlternatingSolidEffect
 
 
 def run():

@@ -53,5 +53,3 @@ class AlternatingSolidEffect(Effect):
         elif(self.currentColorIndex == 1): self.currentColorIndex = 0
 
         pixels.fill(self.colors[self.currentColorIndex])
-        print('alternated: ')
-        print(self.colors[self.currentColorIndex])
