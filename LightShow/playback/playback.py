@@ -4,7 +4,7 @@ import time
 #import neopixel
 from .simulator import Simulator
 import enum
-from effects.defaultEffect import DefaultEffect
+from effects.defaultEffects import *
 
 
 def run():
@@ -12,7 +12,7 @@ def run():
     NUM_PIXELS = 100
     LOOP_TIME = 4 # in ms
 
-    currentEffect = DefaultEffect()
+    currentEffect = AlternatingSolidEffect()
 
     #Initialize neopixel or simulator
     #pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2, auto_write=False, pixel_order=ORDER)
@@ -39,7 +39,6 @@ def run():
         currentEffect.render(pixels, NUM_PIXELS, ms_later)
         pixels.show()
         time.sleep(LOOP_TIME)
-        print('test')
     
 
 ''' test 
