@@ -1,6 +1,16 @@
-import abc;
 from core.effect import Effect
 import time
+
+class EmptyEffect(Effect):
+
+    def __init__(self):
+        pass
+
+    def start(self, pixels, num_pixels):
+        pass
+
+    def render(self, pixels, num_pixels, ms_later):
+        pass
 
 class DefaultEffect(Effect):
 
@@ -10,12 +20,12 @@ class DefaultEffect(Effect):
     def __init__(self):
         pass
 
-    def start(self, pixels, n):
+    def start(self, pixels, num_pixels):
         pixels.fill((0, 255, 0))
 
-    def render(self, pixels, n, ms_later):
+    def render(self, pixels, num_pixels, ms_later):
         
-        if self.pos >= n or self.pos < 0:
+        if self.pos >= num_pixels or self.pos < 0:
             self.dir *= -1
             self.pos += self.dir
 
@@ -37,12 +47,12 @@ class AlternatingSolidEffect(Effect):
     def __init__(self):
         pass
 
-    def start(self, pixels, n):
+    def start(self, pixels, num_pixels):
         self.startTime = time.time()
         self.currentColorIndex = 0
         pixels.fill(self.colors[self.currentColorIndex])
 
-    def render(self, pixels, n, ms_later):
+    def render(self, pixels, num_pixels, ms_later):
         currentTime = time.time()
         if currentTime - self.startTime > self.color_time:
             self.alternateColor(pixels)

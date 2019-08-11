@@ -1,4 +1,4 @@
-import playback.playback
+import playback
 
 if __name__ == '__main__':
-    playback.playback.run()
+    playback.run()
