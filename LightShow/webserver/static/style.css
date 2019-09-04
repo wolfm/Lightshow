@@ -1,0 +1,13 @@
+.header
+{
+    background: darkblue;
+    height: 50px;
+    width: 100%
+}
+
+.subheader
+{
+    background: darkcyan;
+    height: 30px;
+    width: 100%
+}

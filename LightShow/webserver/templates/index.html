@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>LED Controls</title>
+
+    <link rel='stylesheet' href='/static/style.css'/>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'>
+    </script>
+
+
+    <script type='text/javascript' language='javascript'>
+
+        function changeEffect(el) {
+            $.ajax({
+                url: '/changeEffect',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({newEffect : $(el).val(),}, null, '\t'),
+                type: 'POST',
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <div class='header'>
+        header
+    </div>
+    
+    <div class = 'subheader'>
+        effect_name
+    </div>
+    <button name='animation1' value='defaultEffects.DefaultEffect' onclick='changeEffect(this)'> Default Effect </button>
+    <button name='animation2' value='defaultEffects.AlternatingSolidEffect' onclick='changeEffect(this)'> Alternating Solid Effect </button>
+
+</body>
+
+</html>

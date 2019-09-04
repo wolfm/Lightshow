@@ -11,6 +11,7 @@ import sys
 import inspect
 from core.effect import Effect
 import webserver.server as webserver
+from show import Show
 
 def prcoessMessage(msg):
     if msg['msg'] == 'changeEffect':
@@ -49,13 +50,17 @@ def run(queue):
         SYNCED = 1
         RENDERED = 2
 
-    mode = PlaybackMode.PASSIVE
+    mode = PlaybackMode.SYNCED
 
     LOOP_TIME /= 1000  # convert from ms to s for time.sleep() function
 
     prevTime = time.time()
-    currentEffect.start(pixels, NUM_PIXELS)
+
+    currentShow = Show()
+    currentShow.start(pixels, NUM_PIXELS)
     time.sleep(LOOP_TIME)
+
+    show = Show()
 
     while True:
         msg = None
@@ -68,6 +73,6 @@ def run(queue):
         ms_later = (currentTime - prevTime) * 1000
         prevTime = currentTime
 
-        currentEffect.render(pixels, NUM_PIXELS, ms_later)
+        currentShow.render(pixels, NUM_PIXELS, ms_later)
         pixels.show()
         time.sleep(LOOP_TIME)

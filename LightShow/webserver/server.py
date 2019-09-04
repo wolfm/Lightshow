@@ -1,23 +1,24 @@
-import http.server
-import socketserver
-import threading
-import os
+from flask import Flask, render_template, request
+import json
 
-PORT = 80
-PATH = './webserver/'
+app = Flask(__name__)
 
-def start_server(path, port=80):
-    #Path variable not implermented
-    os.chdir(path)
+def startServer(queue_in):
+    global queue
+    queue = queue_in
+    app.run(host='0.0.0.0', use_reloader=False)
 
-    httpd = http.server.HTTPServer(('', port), http.server.CGIHTTPRequestHandler)
-    httpd.serve_forever()
+@app.route("/")
+def hello():
+    return render_template("index.html")
 
-daemon = threading.Thread(name='daemon_server', target=start_server, args=(PATH, PORT))
-daemon.setDaemon(True)
-daemon.start()
-
-print('Web Server Running...')
-
-while True:
+@app.route("/changeMode", methods=['POST'])
+def changeMode():
+    #TODO implement
     pass
+
+@app.route("/changeEffect", methods=['POST'])
+def changeEffect():
+    request.json.update({'msg':'changeEffect'})
+    queue.put(request.json)
+    return json.dumps({'status':'OK'})
