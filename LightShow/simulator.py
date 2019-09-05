@@ -48,6 +48,7 @@ class Simulator:
         hexcode = '#000000'
 
         #Iterate through update queue, changing each corresponding pixel
+        #print("Update queue: " + str(self.update_queue))
         while len(self.update_queue) > 0:
             item = self.update_queue.popleft()
             hexcode = '#%02x%02x%02x' % item[1]

@@ -3,6 +3,10 @@
 # - Make more effects and make first actual light show!
 # - Update the passive effects code to deal with the transparency system
 # - Make the GUI for controlling passive effects at least usable
+# - Wire up the device
+# - Move the actual creating of the pixels object to the __main__ (so that it exists outside the thread, isn't recreated with each thread)
+# - Convert deques to queues
+# - Make it so that each json file does not have to specify "effects." for each effect name
 
 from collections import deque
 import pickle
@@ -96,8 +100,8 @@ while ms_elapsed < ms_length:
             layers.pop(i)
             print("Layer " + str(i) + " finished")
             update_set = update_set.union(set(range(0,num_pixels)))
+
         else:
-            
             returned_set = layers[i].update_layer(ms_elapsed)
             #print("layers[i].update_layer(ms_elapsed) returns " + str(returned_set))
             update_set = update_set.union(returned_set)

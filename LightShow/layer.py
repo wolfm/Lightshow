@@ -1,17 +1,18 @@
 class Layer:
 
-    pixels = []
-    num_pixels = 0
-    update_set = set()
-    effect = None
-    layer_level = 0
+    #pixels = []
+    #num_pixels = 0
+    #update_set = set()
+    #effect = None
+    #layer_level = 0
 
     def __init__(self, num_pixels, effect_in, layer_level_in, end_time_in):
         self.num_pixels = num_pixels
         self.effect = effect_in
-        self.layerLevel = layer_level_in
+        self.layer_level = layer_level_in
         self.pixels = [(0,0,0,0)] * num_pixels
         self.end_time = end_time_in
+        self.update_set = set()
 
     def __getitem__(self, index):
         return self.pixels[index]

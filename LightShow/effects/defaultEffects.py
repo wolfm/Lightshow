@@ -76,7 +76,7 @@ class SolidEffect(Effect):
 
     def __init__(self, startTime, properties = {}):
         self.startTime = startTime
-        self.color = [0,0,0,1.0]
+        self.color = [255,0,0,1.0]
         if "color" in properties:
             self.color = properties["color"]
 
