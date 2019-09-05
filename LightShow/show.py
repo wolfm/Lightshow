@@ -10,6 +10,7 @@ class Show():
 
     currentEffects = [] #sorted by layer (AKA render order)
     upcomingEffects = deque() # sorted by start time
+    activeLayers = []
 
     def __init__(self):
         pass
@@ -19,12 +20,12 @@ class Show():
         pass
 
     def render(self, pixels, NUM_PIXELS, ms_later):
-        pass
-        #if self.internalTime > upcomingEffects[0]:
+        
+        #For all effects that are set to start now
+        while self.internalTime > self.upcomingEffects[0].startTime:
             
-            #append top upcoming effect to current effects in correct order
-            #check again to see if any more effects have started
-
-        #render in order of layer
-            
-        #a method for rendering a given moment, based on the start times, end times, and layering
+            for i in range(0, len(self.currentEffects)):
+                if self.upcomingEffects[0].layer <= self.currentEffects[i].layer:
+                    self.currentEffects.insert(i+1, self.currentEffects[i])
+                    break
+        

@@ -1,0 +1,50 @@
+{
+    "title": "Test Show",
+    "version": "0.1",
+    "bpm": 120,
+    "totalBeats" : 26,
+    "num_pixels" : 100,
+    "effects" : 
+    [
+        {
+            "startBeat": 1,
+            "endBeat" : 5,
+            "layer" : 1, 
+            "effect" : "effects.defaultEffects.MovingPixel",
+            "properties" : {
+                "color" : [0, 255, 0, 1.0]
+            }
+        },
+
+        {
+            "startBeat": 5,
+            "endBeat" : 9,
+            "layer" : 1, 
+            "effect" : "effects.defaultEffects.AlternatingSolidEffect",
+            "properties" : {
+                "color1" : [0, 0, 255, 1.0],
+                "color2" : [255, 255, 0, 1.0]
+            }
+        },
+        
+        {
+            "startBeat": 10,
+            "endBeat" : 17,
+            "layer" : 1, 
+            "effect" : "effects.defaultEffects.SolidEffect",
+            "properties" : {
+                "color" : [255, 0, 0, 1.0]
+            }
+        },
+
+        {
+            "startBeat": 13,
+            "endBeat" : 25,
+            "layer" : 1, 
+            "effect" : "effects.defaultEffects.MovingPixel",
+            "properties" : {
+                "color" : [0, 255, 255, 0.6]
+            }
+        }
+    ]
+}
