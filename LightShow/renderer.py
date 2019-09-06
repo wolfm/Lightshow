@@ -1,7 +1,6 @@
 #TODO:
 # - Work out blending of colors between layers
 # - Make more effects and make first actual light show!
-# - Update the passive effects code to deal with the transparency system
 # - Make the GUI for controlling passive effects at least usable
 # - Wire up the device
 # - Move the actual creating of the pixels object to the __main__ (so that it exists outside the thread, isn't recreated with each thread)
@@ -53,7 +52,7 @@ while len(effectsQueue) > 0:
     startTime = beatsToMs(bpm, effect['startBeat'])
     endTime = beatsToMs(bpm, effect['endBeat'])
     layer = effect['layer']
-    effectObject = all_effects[effect['effect']](startTime, effect['properties'])
+    effectObject = all_effects["effects." + effect['effect']](startTime, bpm, effect['properties'])
     effectsList.append({
         "startTime" : startTime,
         "endTime": endTime,
@@ -151,7 +150,7 @@ showData = deque([
 #save show as a binary
 
 show = {"name": "Test Show", 
-        "num_pixels": 100,
+        "num_pixels": num_pixels,
         "data": showData
         }
 

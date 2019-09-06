@@ -31,14 +31,25 @@
 <body>
 
     <div class='header'>
-        header
+        <!-- One mode for individual effect control -->
+        <!-- One mode for show control -->
     </div>
     
     <div class = 'subheader'>
-        effect_name
+        <!-- Effect dropdown list, auto-populated -->
+        <!-- A play-pause button to stop or start whichever effect is selected-->
+        
+        <!-- OR, if the show mode is selected -->
+        <!-- Show a dropdown list of all rendered shows -->
     </div>
+
+    <!-- Custom control GUI for each effect -->
+    <!-- TODO: Get rid of this stuff -->
     <button name='animation1' value='defaultEffects.SolidEffect' onclick='changeEffect(this)'> Solid Red </button>
     <button name='animation2' value='defaultEffects.AlternatingSolidEffect' onclick='changeEffect(this)'> Alternating Solid Effect </button>
+
+    <!-- OR, if the show mode is selected -->
+    <!-- For the current show , show a play / pause button and a playback progress bar-->
 
 </body>
 

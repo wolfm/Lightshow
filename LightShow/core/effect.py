@@ -5,7 +5,7 @@ class Effect:
     # a superclass for all effects
 
     @abc.abstractmethod
-    def __init__(self, startTime, properties = {}):
+    def __init__(self, startTime, bpm, properties = {}):
         pass
 
     @abc.abstractmethod
@@ -18,3 +18,8 @@ class Effect:
         #render the effect some number of ms after it was rendered before
         #alternatively, effects could keep track of the time themselves, but this would limit the ability to change the speed of effects externally
         pass
+
+class EffectRes:
+    @staticmethod
+    def lerp(start, finish, progress):
+        return start + (progress * (finish - start))

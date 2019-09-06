@@ -35,6 +35,7 @@ def run(queue):
     # Initialize neopixel or simulator
     # Pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2, auto_write=False, pixel_order=ORDER)
     global pixels
+    print("NUM_PIXELS: " + str(NUM_PIXELS))
     pixels = Simulator(NUM_PIXELS)
 
     LOOP_TIME /= 1000  # convert from ms to s for time.sleep() function

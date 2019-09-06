@@ -1,0 +1,22 @@
+{
+    "title": "Everytime We Touch",
+    "version": "0.1",
+    "bpm": 142,
+    "totalBeats" : 26,
+    "num_pixels" : 200,
+    "start_delay" : 0,
+    "effects" : 
+    [
+        {
+            "startBeat": 1,
+            "endBeat" : 5,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [178, 35, 222, 1.0],
+                "color2" : [178, 35, 222, 0.5],
+                "times_perbeat" : 1
+            }
+        },
+    ]
+}

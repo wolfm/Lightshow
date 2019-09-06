@@ -5,7 +5,7 @@ import sys
 
 class Simulator:
 
-    canvas_width = 800
+    canvas_width = 1400
     canvas_height = 76
 
     pixels = []
@@ -38,7 +38,7 @@ class Simulator:
             self.pixels.append((0, 0, 0))
             self.pixel_pos_list.append(i * self.pixel_width)
             rect_left_x = i * self.pixel_width
-            self.rectangles.append(self.canvas.create_rectangle(rect_left_x, self.y, rect_left_x + self.pixel_width, self.y - self.pixel_width, outline="#000000", fill="#000000"))
+            self.rectangles.append(self.canvas.create_rectangle(rect_left_x, self.y, rect_left_x + self.pixel_width, self.y - self.pixel_width, outline="", fill="#000000"))
 
 
         self.show()

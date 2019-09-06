@@ -15,6 +15,7 @@ import webserver.server as webserver
 
 #TODO
 # - Rewrite to avoid all these globals vars
+# - Add the ability to change effect parameters on the fly
 
 def prcoessMessage(msg):
     if msg['msg'] == 'changeEffect':
@@ -23,13 +24,16 @@ def prcoessMessage(msg):
         global layer
         global NUM_PIXELS
         global ms_elapsed
-        currentEffect = all_effects["effects." + msg['newEffect']](ms_elapsed)
+        global BPM
+        currentEffect = all_effects["effects." + msg['newEffect']](ms_elapsed, BPM)
         layer = Layer(NUM_PIXELS, currentEffect, 1, None)
         layer.start()
 
 def run(queue):
 
     global NUM_PIXELS
+    global BPM
+    BPM = 120
     NUM_PIXELS = 100
     LOOP_TIME = 4  # in ms
 
@@ -45,9 +49,9 @@ def run(queue):
     print(all_effects)
 
     
-    startTime = 0
+    startTime = time.time()
 
-    currentEffect = all_effects["effects.defaultEffects.AlternatingSolidEffect"](startTime)
+    currentEffect = all_effects["effects.defaultEffects.Pulse"](0, BPM)
 
     # Initialize neopixel or simulator
     # Pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2, auto_write=False, pixel_order=ORDER)
