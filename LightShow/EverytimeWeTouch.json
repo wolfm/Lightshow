@@ -13,10 +13,43 @@
             "layer" : 1, 
             "effect" : "defaultEffects.Pulse",
             "properties" : {
-                "color1" : [178, 35, 222, 1.0],
-                "color2" : [178, 35, 222, 0.5],
-                "times_perbeat" : 1
+                "color1" : [178, 35, 222, 0.5],
+                "color2" : [178, 35, 222, 1.0],
+                "symmetric" : true
             }
         },
+        {
+            "startBeat": 5,
+            "endBeat" : 9,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [39, 224, 227, 0.5],
+                "color2" : [39, 224, 227, 1.0],
+                "symmetric" : true
+            }
+        },
+        {
+            "startBeat": 9,
+            "endBeat" : 13,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [252, 71, 216, 0.0],
+                "color2" : [252, 71, 216, 1.0],
+                "symmetric" : true
+            }
+        },
+        {
+            "startBeat": 13,
+            "endBeat" : 17,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [71, 71, 252, 0.5],
+                "color2" : [71, 71, 252, 1.0],
+                "symmetric" : true
+            }
+        }
     ]
 }

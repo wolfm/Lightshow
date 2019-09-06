@@ -30,7 +30,6 @@ def run(queue):
         data = pickle.load(show_file)
         NUM_PIXELS = data['num_pixels']
         update_queue = data['data']
-        print(data)
 
     # Initialize neopixel or simulator
     # Pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2, auto_write=False, pixel_order=ORDER)

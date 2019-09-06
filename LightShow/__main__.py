@@ -9,7 +9,7 @@ if __name__ == '__main__':
     serverProcess = Process(target=webserver.startServer, args=(pqueue,))
     serverProcess.daemon = True
 
-    playbackProcess = Process(target=playback.run, args=(pqueue,))
+    playbackProcess = Process(target=rendered_playback.run, args=(pqueue,))
     playbackProcess.daemon = True
 
     serverProcess.start()

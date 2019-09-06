@@ -146,10 +146,10 @@ class Pulse(Effect):
         progress = (instant %  self.ms_per_transition) / (self.ms_per_transition)
         if self.symmetric == True:
             if instant // self.ms_per_transition % 2 == 0:
-                for i in range(0,3):
+                for i in range(0,4):
                     pixel[i] = EffectRes.lerp(self.colors[0][i], self.colors[1][i], progress)
             else:
-                for i in range(0,3):
+                for i in range(0,4):
                     pixel[i] = EffectRes.lerp(self.colors[1][i], self.colors[0][i], progress)
 
         else:

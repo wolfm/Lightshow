@@ -25,7 +25,7 @@ def msToBeats(bpm, ms):
     return ((ms / 60000) * bpm) + 1
 
 # take show input file, convert to a show in memory
-with open('testShow.json') as json_file:
+with open('EveryTimeWeTouch.json') as json_file:
     showInput = json.load(json_file)
 
 title = showInput['title']
