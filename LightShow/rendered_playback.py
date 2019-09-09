@@ -11,6 +11,8 @@ import sys
 import inspect
 from core.effect import Effect
 import webserver.server as webserver
+import neopixel
+import board
 
 import pickle
 
@@ -35,7 +37,8 @@ def run(queue):
     # Pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2, auto_write=False, pixel_order=ORDER)
     global pixels
     print("NUM_PIXELS: " + str(NUM_PIXELS))
-    pixels = Simulator(NUM_PIXELS)
+    #pixels = Simulator(NUM_PIXELS)
+    pixels = neopixel.NeoPixel(board.D18, NUM_PIXELS)
 
     LOOP_TIME /= 1000  # convert from ms to s for time.sleep() function
 
