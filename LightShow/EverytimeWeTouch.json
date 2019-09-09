@@ -3,7 +3,7 @@
     "version": "0.1",
     "bpm": 142,
     "totalBeats" : 26,
-    "num_pixels" : 200,
+    "num_pixels" : 100,
     "start_delay" : 0,
     "effects" : 
     [
@@ -13,7 +13,7 @@
             "layer" : 1, 
             "effect" : "defaultEffects.Pulse",
             "properties" : {
-                "color1" : [178, 35, 222, 0.5],
+                "color1" : [178, 35, 222, 0.75],
                 "color2" : [178, 35, 222, 1.0],
                 "symmetric" : true
             }
@@ -24,7 +24,7 @@
             "layer" : 1, 
             "effect" : "defaultEffects.Pulse",
             "properties" : {
-                "color1" : [39, 224, 227, 0.5],
+                "color1" : [39, 224, 227, 0.75],
                 "color2" : [39, 224, 227, 1.0],
                 "symmetric" : true
             }
@@ -35,7 +35,7 @@
             "layer" : 1, 
             "effect" : "defaultEffects.Pulse",
             "properties" : {
-                "color1" : [252, 71, 216, 0.0],
+                "color1" : [252, 71, 216, 0.75],
                 "color2" : [252, 71, 216, 1.0],
                 "symmetric" : true
             }
@@ -46,7 +46,7 @@
             "layer" : 1, 
             "effect" : "defaultEffects.Pulse",
             "properties" : {
-                "color1" : [71, 71, 252, 0.5],
+                "color1" : [71, 71, 252, 0.75],
                 "color2" : [71, 71, 252, 1.0],
                 "symmetric" : true
             }
