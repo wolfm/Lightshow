@@ -2,7 +2,7 @@
 import time
 #import board
 #import neopixel
-from simulator import Simulator
+#from simulator import Simulator
 import enum
 import pkgutil
 from importlib import import_module
@@ -12,6 +12,8 @@ import inspect
 from core.effect import Effect
 from layer import Layer
 import webserver.server as webserver
+import neopixel
+import board
 
 #TODO
 # - Rewrite to avoid all these globals vars
@@ -34,8 +36,9 @@ def run(queue):
     global NUM_PIXELS
     global BPM
     BPM = 120
-    NUM_PIXELS = 100
+    NUM_PIXELS = 300
     LOOP_TIME = 4  # in ms
+    BRIGHTNESS = 0.35
 
     # Dynamically import all effects
     for (_, mod_name, _) in pkgutil.iter_modules([Path(__file__).parent / "effects"]):
@@ -54,9 +57,10 @@ def run(queue):
     currentEffect = all_effects["effects.defaultEffects.Pulse"](0, BPM)
 
     # Initialize neopixel or simulator
-    # Pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=0.2, auto_write=False, pixel_order=ORDER)
+    # Pixels = neopixel.NeoPixel(pixel_pin, NUM_PIXELS, brightness=BRIGHTNESS, auto_write=False, pixel_order=ORDER)
     global pixels
-    pixels = Simulator(NUM_PIXELS)
+    #pixels = Simulator(NUM_PIXELS)
+    pixels = neopixel.NeoPixel(board.D18, NUM_PIXELS, brightness = 0.5, auto_write=False)
 
     class PlaybackMode(enum.Enum):
         PASSIVE = 0
