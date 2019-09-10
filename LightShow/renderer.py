@@ -8,6 +8,7 @@
 # - Make it so that each json file does not have to specify "effects." for each effect name
 
 from collections import deque
+from queue import Queue
 import pickle
 import json
 import pkgutil
@@ -16,7 +17,7 @@ from pathlib import Path
 from core.effect import Effect
 from layer import Layer
 
-MS_STEP = 25
+MS_STEP = 1000
 
 def beatsToMs(bpm, beats):
     return (beats - 1) / bpm * 60000
@@ -111,6 +112,7 @@ while ms_elapsed < ms_length:
 
     #Iterate through each of the pixels in the set, mixing layers to get the output pixel color
         #For each, add an entry to the showData deque (ms_elapsed, pixelId, (r,g,b))
+    update_list = []
     for pixel_id in update_set:
         #mix all layers at this pixel ID above a (0,0,0) base layer
         pixel = [0,0,0]
@@ -124,28 +126,16 @@ while ms_elapsed < ms_length:
             pixel[1] = int((layer[pixel_id][1] * layer[pixel_id][3]) + (pixel[1] * (1.0 - layer[pixel_id][3])))
             pixel[2] = int((layer[pixel_id][2] * layer[pixel_id][3]) + (pixel[2] * (1.0 - layer[pixel_id][3])))
 
-        showData.append((ms_elapsed, pixel_id, tuple(pixel)))
+        update_list.append((pixel_id, tuple(pixel)))
     update_set.clear()
-        
+    if len(update_list) > 0:
+        showData.append((ms_elapsed, update_list))
     ms_elapsed += MS_STEP
 
 print('Rendering complete')
 
-
-
 #convert the show in memory to a deque of pixel changes
 ## format is (ms since start, pixel id, new pixel color tuple (r,g,b))
-
-'''
-showData = deque([
-                (0, 0, (255, 0, 0)),
-                (1000, 1, (255, 125, 0)),
-                (2000, 2, (255, 255, 0)),
-                (3000, 3, (0, 255, 0)),
-                (4000, 4, (0, 0, 255)),
-                (5000, 5, (255, 0, 255)),
-            ])
-'''
 
 #save show as a binary
 
@@ -153,6 +143,9 @@ show = {"name": "Test Show",
         "num_pixels": num_pixels,
         "data": showData
         }
+
+print("showData")
+print(showData)
 
 with open('rendered_shows/data.dat', 'wb') as outfile:
     pickle.dump(show, outfile)

@@ -1,5 +1,9 @@
+
+from simulator import Simulator
+#import board
+#import neopixel
+
 import time
-#from simulator import Simulator
 import enum
 import pkgutil
 from importlib import import_module
@@ -10,8 +14,6 @@ from core.effect import Effect
 import webserver.server as webserver
 from enums import PlaybackMode
 import pickle
-import board
-import neopixel
 
 def run(queue, config):
     player = RenderedPlayer(queue, config)
@@ -46,8 +48,8 @@ class RenderedPlayer:
         self.LOOP_TIME /= 1000  
 
         # Initialize neopixel or simulator
-        #self.pixels = Simulator(self.NUM_PIXELS)
-        self.pixels = neopixel.NeoPixel(board.D18, self.NUM_PIXELS, brightness=self.BRIGHTNESS, auto_write=False)
+        self.pixels = Simulator(self.NUM_PIXELS)
+        #self.pixels = neopixel.NeoPixel(board.D18, self.NUM_PIXELS, brightness=self.BRIGHTNESS, auto_write=False)
 
         #Open show
         with open('rendered_shows/data.dat', 'rb') as show_file:
@@ -92,11 +94,11 @@ class RenderedPlayer:
             time.sleep(2)
             return
 
-        nextElement = self.update_queue.popleft()
+        nextUpdate = self.update_queue.popleft()
+
+        print("Update queue: " + str(self.update_queue))
 
         self.pixels.fill((0,0,0))
-
-        print('LOOP TIME:' + str(self.LOOP_TIME))
 
         while not self.terminate:
             loopStart = time.time()
@@ -109,29 +111,25 @@ class RenderedPlayer:
             currentTime = time.time()
             ms_since_start = (currentTime - self.showStartTime) * 1000
             
-            nextElementStart = nextElement[0]
-            nextElementPixelID = nextElement[1]
-            nextElementPixelData = nextElement[2]
-            index = 0            
-            while(ms_since_start > nextElementStart): #If true, then this update is ready to fire
-                self.pixels[nextElementPixelID] = nextElementPixelData
-                print("updating pixel: " + str(index))
-                index += 1
+            index = 0 #debug 
+            while(ms_since_start > nextUpdate[0]): #If true, then this update is ready to fire
+
+                for pixel_update in nextUpdate[1]:
+                    self.pixels[pixel_update[0]] = pixel_update[1]
+
+                    index += 1 #debug
+
                 if self.update_queue:
                     #start = time.time()
-                    nextElement = self.update_queue.popleft()
+                    nextUpdate = self.update_queue.popleft()
                     #print(time.time() - start)
 
-                    nextElementStart = nextElement[0]
-                    nextElementPixelID = nextElement[1]
-                    nextElementPixelData = nextElement[2]
 
                 else:
                     self.pixels.show()
-                    print("Show Concluded")
+                    print("Update queue end reached - Show Concluded")
                     time.sleep(2)
                     return
                 
             self.pixels.show()
             time.sleep(self.LOOP_TIME)
-
