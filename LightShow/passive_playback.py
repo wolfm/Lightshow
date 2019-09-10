@@ -1,5 +1,5 @@
 import time
-from simulator import Simulator
+#from simulator import Simulator
 import enum
 import pkgutil
 from importlib import import_module
@@ -10,8 +10,8 @@ from core.effect import Effect
 from layer import Layer
 import webserver.server as webserver
 from enums import PlaybackMode
-#import board
-#import neopixel
+import board
+import neopixel
 
 #TODO
 # - Rewrite to avoid all these globals vars
@@ -51,8 +51,8 @@ class PassivePlayer:
         self.currentEffect = self.all_effects["effects.defaultEffects.EmptyEffect"](0, self.BPM)
 
         # Initialize neopixel or simulator
-        self.pixels = Simulator(self.NUM_PIXELS)
-        ### self.pixels = neopixel.NeoPixel(board.D18, self.NUM_PIXELS, brightness=self.BRIGHTNESS, auto_write=False)
+        #self.pixels = Simulator(self.NUM_PIXELS)
+        self.pixels = neopixel.NeoPixel(board.D18, self.NUM_PIXELS, brightness=self.BRIGHTNESS, auto_write=False)
 
 
         #Create effect layer, which will be rendered over black background

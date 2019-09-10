@@ -16,7 +16,7 @@ from pathlib import Path
 from core.effect import Effect
 from layer import Layer
 
-MS_STEP = 4
+MS_STEP = 25
 
 def beatsToMs(bpm, beats):
     return (beats - 1) / bpm * 60000
@@ -25,7 +25,7 @@ def msToBeats(bpm, ms):
     return ((ms / 60000) * bpm) + 1
 
 # take show input file, convert to a show in memory
-with open('shows/EveryTimeWeTouch.json') as json_file:
+with open('shows/EverytimeWeTouch.json') as json_file:
     showInput = json.load(json_file)
 
 title = showInput['title']
