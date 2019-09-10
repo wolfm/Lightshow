@@ -57,7 +57,7 @@ class RenderedPlayer:
             if data["num_pixels"] != self.NUM_PIXELS:
                 print("number of pixels configured (" + str(self.NUM_PIXELS) + ") differs from number of pixels specified in show (" + str(data['num_pixels']) + "). Unpredictable behavior may occur.") 
             self.prcoessMessageNUM_PIXELS = data['num_pixels']
-            self.update_queue = data['data']
+            self.update_list = data['data']
         
         self.terminate = False
 
@@ -89,18 +89,16 @@ class RenderedPlayer:
         self.showStartTime = time.time()
         time.sleep(self.LOOP_TIME)
 
-        if len(self.update_queue) <= 0:
+        if len(self.update_list) <= 0:
             print("Show Concluded")
             time.sleep(2)
             return
 
-        nextUpdate = self.update_queue.popleft()
-
-        print("Update queue: " + str(self.update_queue))
-
         self.pixels.fill((0,0,0))
 
-        while not self.terminate:
+        update_index = 0
+        update_count = len(self.update_list)
+        while not self.terminate and update_index < update_count:
             loopStart = time.time()
 
             msg = None
@@ -111,25 +109,18 @@ class RenderedPlayer:
             currentTime = time.time()
             ms_since_start = (currentTime - self.showStartTime) * 1000
             
-            index = 0 #debug 
-            while(ms_since_start > nextUpdate[0]): #If true, then this update is ready to fire
+            while ms_since_start > self.update_list[update_index][0] : #If true, then this update is ready to fire
 
-                for pixel_update in nextUpdate[1]:
+                for pixel_update in self.update_list[update_index][1]:
                     self.pixels[pixel_update[0]] = pixel_update[1]
 
-                    index += 1 #debug
-
-                if self.update_queue:
-                    #start = time.time()
-                    nextUpdate = self.update_queue.popleft()
-                    #print(time.time() - start)
-
-
-                else:
+                update_index += 1
+                if update_index >= update_count:
                     self.pixels.show()
-                    print("Update queue end reached - Show Concluded")
+                    print("Update list end reached - Show Concluded")
                     time.sleep(2)
                     return
                 
             self.pixels.show()
             time.sleep(self.LOOP_TIME)
+

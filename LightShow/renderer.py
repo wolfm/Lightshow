@@ -17,7 +17,7 @@ from pathlib import Path
 from core.effect import Effect
 from layer import Layer
 
-MS_STEP = 1000
+MS_STEP = 25
 
 def beatsToMs(bpm, beats):
     return (beats - 1) / bpm * 60000
@@ -67,7 +67,7 @@ print(effectsList)
 #render loop setup
 
 ms_elapsed = 0
-showData = deque()
+showData = []
 layers = []
 nextEventIndex = 0
 
