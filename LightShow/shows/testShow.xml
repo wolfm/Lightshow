@@ -1,0 +1,19 @@
+<Show title='Test Show' version='0.1' bpm='120' >
+
+    <Effect startBeat = '1', endBeat = '5', effect = "effects.defaultEffects.DefaultEffect", layer='1'>
+        <!-- properties go in here -->
+    </Effect>
+
+    <Effect startBeat = '5', endBeat = '9', effect = "effects.defaultEffects.DefaultEffect", layer='1'>
+        <!-- properties go in here -->
+    </Effect>
+
+    <Effect startBeat = '9', endBeat = '13', effect = "effects.defaultEffects.DefaultEffect", layer='1'>
+        <!-- properties go in here -->
+    </Effect>
+
+    <Effect startBeat = '9', endBeat = '13', effect = "effects.defaultEffects.DefaultEffect", layer='2'>
+        <!-- properties go in here -->
+    </Effect>
+
+</Show>

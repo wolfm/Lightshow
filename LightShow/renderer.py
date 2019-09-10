@@ -25,7 +25,7 @@ def msToBeats(bpm, ms):
     return ((ms / 60000) * bpm) + 1
 
 # take show input file, convert to a show in memory
-with open('EveryTimeWeTouch.json') as json_file:
+with open('shows/EveryTimeWeTouch.json') as json_file:
     showInput = json.load(json_file)
 
 title = showInput['title']
@@ -154,5 +154,5 @@ show = {"name": "Test Show",
         "data": showData
         }
 
-with open('data.dat', 'wb') as outfile:
+with open('rendered_shows/data.dat', 'wb') as outfile:
     pickle.dump(show, outfile)

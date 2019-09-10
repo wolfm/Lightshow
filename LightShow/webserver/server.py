@@ -14,8 +14,9 @@ def hello():
 
 @app.route("/changeMode", methods=['POST'])
 def changeMode():
-    #TODO implement
-    pass
+    request.json.update({'msg':'changeMode'})
+    queue.put(request.json)
+    return json.dumps({'status':'OK'})
 
 @app.route("/changeEffect", methods=['POST'])
 def changeEffect():

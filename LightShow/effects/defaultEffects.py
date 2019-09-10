@@ -7,7 +7,7 @@ class EmptyEffect(Effect):
         pass
 
     def start(self, pixels, num_pixels):
-        pass
+        pixels.fill((0,0,0,1.0))
 
     def render(self, pixels, num_pixels, currentTIme):
         pass

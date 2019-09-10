@@ -1,0 +1,55 @@
+{
+    "title": "Everytime We Touch",
+    "version": "0.1",
+    "bpm": 142,
+    "totalBeats" : 26,
+    "num_pixels" : 300,
+    "start_delay" : 0,
+    "effects" : 
+    [
+        {
+            "startBeat": 1,
+            "endBeat" : 5,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [178, 35, 222, 0.75],
+                "color2" : [178, 35, 222, 1.0],
+                "symmetric" : true
+            }
+        },
+        {
+            "startBeat": 5,
+            "endBeat" : 9,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [39, 224, 227, 0.75],
+                "color2" : [39, 224, 227, 1.0],
+                "symmetric" : true
+            }
+        },
+        {
+            "startBeat": 9,
+            "endBeat" : 13,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [252, 71, 216, 0.75],
+                "color2" : [252, 71, 216, 1.0],
+                "symmetric" : true
+            }
+        },
+        {
+            "startBeat": 13,
+            "endBeat" : 17,
+            "layer" : 1, 
+            "effect" : "defaultEffects.Pulse",
+            "properties" : {
+                "color1" : [71, 71, 252, 0.75],
+                "color2" : [71, 71, 252, 1.0],
+                "symmetric" : true
+            }
+        }
+    ]
+}
